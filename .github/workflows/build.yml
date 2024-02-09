@@ -31,11 +31,11 @@ jobs:
       - name: Install dependencies
         run: go get .
       - name: Build for ${{ matrix.os }}
-        run: GOOS="{{ matrix.GOOS }}" GOARCH="amd64" go build -o {{ matrix.artifact }}
+        run: GOOS="${{ matrix.GOOS }}" GOARCH="amd64" go build -o ${{ matrix.artifact }}
 
       - name: Archive artifacts
         uses: actions/upload-artifact@v2
         with:
           name: go-obfuscate-artifacts
           path: |
-            {{ matrix.artifact }}
+            ${{ matrix.artifact }}
