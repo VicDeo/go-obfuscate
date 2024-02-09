@@ -3,10 +3,11 @@ on:
   workflow_dispatch:
   
 jobs:
-  call-workflow-passing-data:
+  test:
     uses: VicDeo/go-obfuscate/.github/workflows/test.yml@master
 
   build:
+    needs: test
     strategy:
       matrix:
         include:
