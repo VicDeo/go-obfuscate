@@ -11,16 +11,13 @@ jobs:
     strategy:
       matrix:
         include:
-          - os: ubuntu-latest
-            GOOS: linux
+          - GOOS: linux
             artifact: go-obfuscate.linux.amd64 
-          - os: windows-latest
-            GOOS: windows
+          - GOOS: windows
             artifact: go-obfuscate.exe 
-          - os: macos-latest
-            GOOS: darwin
+          - GOOS: darwin
             artifact: go-obfuscate.macos.amd64 
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     
     steps:
       - uses: actions/checkout@v4
