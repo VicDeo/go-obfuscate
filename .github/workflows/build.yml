@@ -7,8 +7,6 @@ jobs:
     uses: VicDeo/go-obfuscate/.github/workflows/test.yml@master
 
   build:
-    env:
-      GO_VERSION="1.21.x"
     strategy:
       matrix:
         include:
