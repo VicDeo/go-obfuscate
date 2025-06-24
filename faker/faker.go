@@ -21,6 +21,7 @@ const (
 	TypeLorem       = "lorem"
 	TypeFixed       = "fixed"
 	TypeString      = "string"
+	TypeNull        = "null"
 )
 
 var (
@@ -56,6 +57,8 @@ type FakeFixed struct {
 type FakeString struct {
 	Length int
 }
+
+type FakeNull struct{}
 
 func New(fakeConfig map[string]interface{}) FakeGenerator {
 	if fakeType, ok := fakeConfig["type"]; ok {
@@ -107,6 +110,8 @@ func New(fakeConfig map[string]interface{}) FakeGenerator {
 			return &FakeString{
 				Length: length,
 			}
+		case TypeNull:
+			return &FakeNull{}
 		}
 	}
 	return nil
@@ -171,4 +176,8 @@ func (ff *FakeURL) GetData() interface{} {
 
 func (ff *FakeLorem) GetData() interface{} {
 	return anotherFake.Sentence()
+}
+
+func (fn *FakeNull) GetData() interface{} {
+	return nil
 }
